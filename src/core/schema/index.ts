@@ -223,6 +223,9 @@ type Account {
 
   "The storage of this account"
   storage: Storage
+
+  "Whether this account supports a given interface"
+  supportsInterface(selectors: [String]!): String!
 }
 
 """
@@ -341,6 +344,17 @@ enum KeyType {
   address
   number
   string
+}
+
+enum ERC165Result {
+  "Contract supports the interface"
+  SUPPORTED
+
+  "Contract doesn't support the interface"
+  NOT_SUPPORTED
+
+  "Contract doesn't expose a supportsInterface(bytes4) function"
+  NON_INTROSPECTABLE
 }
 
 """
